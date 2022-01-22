@@ -3,7 +3,7 @@ import os
 import subprocess
 
 # FFMPEG binary location
-ffmpeg = "ffmpeg.exe"
+ffmpeg = "ffmpeg"
 
 # Ask user for album directory
 dir = input("Enter the path to your album's audio and cover art (hit enter for current working directory): ")
