@@ -4,7 +4,9 @@ If you run a YouTube channel for music like I do, you will find this useful.
 It lets you generate an output video from audio files and their respective cover art reasonably fast.
 
 ## How to use
-The simplest way to run this tool is to download the binary for your OS on the [releases](https://github.com/npgy/album2vid/releases) page. You can also choose to just run the python script manually with your own binary of Ffmpeg.  
+The simplest way to run this tool is to download the binary for your OS on the [releases](https://github.com/npgy/album2vid/releases) page. 
+Unfortunately at the moment there is only a binary for Windows.  
+You can also choose to just run the python script manually with your own binary of Ffmpeg.  
 
 First make sure you have prepared your album's files correctly. They need to be ordered numerically and the cover art needs to have a particular name.
 Here's an example of what that would look like:  
