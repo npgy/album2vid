@@ -15,9 +15,13 @@ As you can see, the tracks have their numbers in front of them, and the cover ar
 This program also accepts "cover.png".
 
 Once you open the program, it will ask for the directory of your album's files. You can paste in the path url or just run the program inside that folder and hit enter.  
-After it converts your audio files and cover art to a video, a file named "out.mp4" will appear. This is your final video, you are ready to upload!
+After it converts your audio files and cover art to a video, a file named "out.mp4" will appear. This is your final video, you are ready to upload!  
+In addition, this program also generates a tracklist with timestamps for you! It will output to the file "tracklist.txt"
 
 Some things to note are that this renders in x264 and 1080x1080. Your cover art must be 1:1 aspect ratio; most are.  
-In the future I plan to add the feature to calculate the tracklist with timestamps. Also just generally work on improving usability and fixing bugs.
 
 I hope anyone who comes across this finds it useful!
+
+### Big thanks to:
+Z from Nightride FM for help with FFMPEG  
+HurleyBirdJr for creating the GUI (wip)
