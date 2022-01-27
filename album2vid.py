@@ -90,7 +90,7 @@ with open(dir+"files.txt", "w") as f:
 # First pass to encode audio (this avoids errors in the final render)
 os.mkdir(temp_dir)
 for file in files:
-    first_pass_cmd = f"""{ffmpeg} -i "{file}" -map 0 -map -v? -map V? -acodec aac -af aresample=osf=s16:dither_method=triangular_hp -b:a 320k "{temp_dir}/{get_shortname(file)}.m4a" """
+    first_pass_cmd = f"""{ffmpeg} -i "{file}" -map 0 -map -v? -map V? -acodec aac -b:a 320k "{temp_dir}/{get_shortname(file)}.m4a" """
     subprocess.run(first_pass_cmd)
 
 # Construct FFMPEG command for final render
