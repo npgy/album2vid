@@ -21,3 +21,7 @@ In addition, this program also generates a tracklist with timestamps for you! It
 Some things to note are that this renders in x264 and 1080x1080. Your cover art must be 1:1 aspect ratio; most are.  
 
 I hope anyone who comes across this finds it useful!
+
+### Big thanks to:
+Z from Nightride FM for help with FFMPEG
+HurleyBirdJr for creating the GUI (wip)
