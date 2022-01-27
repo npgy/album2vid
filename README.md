@@ -23,5 +23,5 @@ Some things to note are that this renders in x264 and 1080x1080. Your cover art 
 I hope anyone who comes across this finds it useful!
 
 ### Big thanks to:
-Z from Nightride FM for help with FFMPEG
+Z from Nightride FM for help with FFMPEG  
 HurleyBirdJr for creating the GUI (wip)
