@@ -3,6 +3,13 @@ import os
 import subprocess
 import mutagen
 import time
+import argparse
+
+parser = argparse.ArgumentParser(description="A command line tool for generating videos from albums/tracks")
+parser.add_argument('-f', '--fast', action='store_true', help="Enables fast mode, may cause rendering errors")
+parser.add_argument("path", nargs="?", default="", help="The full path to the album's folder")
+args = parser.parse_args()
+args = parser.parse_args()
 
 def get_runtime(filename):
     """Returns the runtime of a file
@@ -30,19 +37,28 @@ def get_timestamp(seconds):
     """
     return time.strftime("%H:%M:%S", time.gmtime(seconds))
 
+def throw_error(text):
+    print("ERROR: "+text)
+    quit()
+
 # FFMPEG binary location
 ffmpeg = "ffmpeg"
 
+print("Welcome to album2vid!")
+
 # Ask user for album directory
-dir = input("Enter the path to your album's audio and cover art (hit enter for current working directory): ")
+# dir = input("Enter the path to your album's audio and cover art (hit enter for current working directory): ")
+dir = args.path
 
 # Temp directory for first pass transcoding
 temp_dir = dir+"/.temp"
 
 # Verify directory is valid
 if not (os.path.isdir(dir) or dir == ""):
-    print("The directory could not be found")
-    quit()
+    throw_error("The directory could not be found")
+
+print(f"Currently running in the directory: {os.getcwd()}")
+print()
 
 # Add trailing slash for expanding filenames
 try:
@@ -56,12 +72,17 @@ exts = ('wav', 'mp3', 'm4a', 'ogg', 'flac')
 files = []
 for ext in exts:
     files.extend(glob(dir+"*."+ext))
+if len(files) == 0:
+    throw_error("The audio files could not be found")
 
 # Find cover art
 cover = []
 cover.extend(glob(dir+"cover.jpg"))
 cover.extend(glob(dir+"cover.png"))
-cover = cover[0]
+try:
+    cover = cover[0]
+except IndexError:
+    throw_error("The cover photo could not be found")
 
 # Sort the list of files
 files.sort()
@@ -76,7 +97,8 @@ with open(dir+"tracklist.txt", "w") as f:
 # Write all audio files to a temporary text document for ffmpeg
 with open(dir+"files.txt", "w") as f:
     for file in files:
-        file = f"{temp_dir}/{get_shortname(file)}.m4a"
+        if not args.fast:
+            file = f"{temp_dir}/{get_shortname(file)}.m4a"
         # This part ensures that any apostrophes are escaped
         file = file.split("'")
         if len(file) > 1:
@@ -87,23 +109,25 @@ with open(dir+"files.txt", "w") as f:
         # Write the file line
         f.write("file '"+file+"'\n")
 
-# First pass to encode audio (this avoids errors in the final render)
-os.mkdir(temp_dir)
-for file in files:
-    first_pass_cmd = f"""{ffmpeg} -i "{file}" -map 0 -map -v? -map V? -acodec aac -b:a 320k "{temp_dir}/{get_shortname(file)}.m4a" """
-    subprocess.run(first_pass_cmd)
+if not args.fast:
+    # First pass to encode audio (this avoids errors in the final render)
+    os.mkdir(temp_dir)
+    for file in files:
+        first_pass_cmd = f"""{ffmpeg} -i "{file}" -map 0 -map -v? -map V? -acodec aac -b:a 320k "{temp_dir}/{get_shortname(file)}.m4a" """
+        subprocess.run(first_pass_cmd)
 
 # Construct FFMPEG command for final render
-render_cmd = f"{ffmpeg} -y -loop 1 -framerate 1 -i {cover} -f concat -safe 0 -i {dir}files.txt -tune stillimage -shortest -fflags +shortest -max_interleave_delta 100M -vf format=yuv420p -s 1080x1080 -b:a 320k {dir}out.mp4"
+render_cmd = f'{ffmpeg} -y -loop 1 -framerate 1 -i "{cover}" -f concat -safe 0 -i "{dir}files.txt" -tune stillimage -shortest -fflags +shortest -max_interleave_delta 100M -vf format=yuv420p -s 1080x1080 -b:a 320k "{dir}out.mp4"'
 subprocess.run(render_cmd)
 
 # Remove unndeeded files list file
 os.remove(dir+"files.txt")
 
-# Remove temp dir
-for file in files:
-    try:
-        os.remove(f"{temp_dir}/{get_shortname(file)}.m4a")
-    except FileNotFoundError:
-        pass
-os.rmdir(temp_dir)
+if not args.fast:
+    # Remove temp dir
+    for file in files:
+        try:
+            os.remove(f"{temp_dir}/{get_shortname(file)}.m4a")
+        except FileNotFoundError:
+            pass
+    os.rmdir(temp_dir)
