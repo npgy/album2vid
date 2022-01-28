@@ -3,10 +3,16 @@
 If you run a YouTube channel for music like I do, you will find this useful.
 It lets you generate an output video from audio files and their respective cover art reasonably fast.
 
-## How to use
-The simplest way to run this tool is to download the binary for your OS on the [releases](https://github.com/npgy/album2vid/releases) page. 
+## Installation
+The simplest way to install this tool is to download the binary for your OS on the [releases](https://github.com/npgy/album2vid/releases) page. 
 Unfortunately at the moment there is only a binary for Windows.  
-You can also choose to just run the python script manually with your own binary of Ffmpeg.  
+You can also choose to just clone the python script and run it manually with your own binary of Ffmpeg. This will work on any OS, although it's only been tested on Windows and macOS.  
+
+## Usage
+`album2vid [-h] [-f] [path]`  
+Flags:
+`-f` or `--fast`: Enables fast mode, may cause rendering errors.
+
 
 First make sure you have prepared your album's files correctly. They need to be ordered numerically and the cover art needs to have a particular name.
 Here's an example of what that would look like:  
@@ -26,4 +32,6 @@ I hope anyone who comes across this finds it useful!
 
 ### Big thanks to:
 Z from Nightride FM for help with FFMPEG  
-HurleyBirdJr for creating the GUI (wip)
+
+### Projects that use this:
+album2vid-gui by HurleyBirdJr (wip)
