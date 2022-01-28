@@ -4,6 +4,7 @@ import subprocess
 import mutagen
 import time
 import argparse
+from sys import exit
 
 parser = argparse.ArgumentParser(description="A command line tool for generating videos from albums/tracks")
 parser.add_argument('-f', '--fast', action='store_true', help="Enables fast mode, may cause rendering errors")
@@ -39,7 +40,7 @@ def get_timestamp(seconds):
 
 def throw_error(text):
     print("ERROR: "+text)
-    quit()
+    exit()
 
 # FFMPEG binary location
 ffmpeg = "ffmpeg"
