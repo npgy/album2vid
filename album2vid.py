@@ -118,7 +118,7 @@ if not args.fast:
         subprocess.run(first_pass_cmd)
 
 # Construct FFMPEG command for final render
-render_cmd = f'{ffmpeg} -y -loop 1 -framerate 1 -i "{cover}" -f concat -safe 0 -i "{dir}files.txt" -tune stillimage -shortest -fflags +shortest -max_interleave_delta 100M -vf format=yuv420p -s 1080x1080 -b:a 320k "{dir}out.mp4"'
+render_cmd = f'{ffmpeg} -hwaccel auto -y -loop 1 -framerate 1 -i "{cover}" -f concat -safe 0 -i "{dir}files.txt" -tune stillimage -shortest -fflags +shortest -max_interleave_delta 100M -vf format=yuv420p -s 1080x1080 -b:a 320k "{dir}out.mp4"'
 subprocess.run(render_cmd)
 
 # Remove unndeeded files list file
