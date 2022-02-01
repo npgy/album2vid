@@ -13,6 +13,7 @@ You can also choose to just clone the python script and run it manually with you
 
 Flags:  
 `-f` or `--fast`: Enables fast mode, may cause rendering errors.  
+Essentially, without this flag, the program converts your input files to AAC first, and then stitches those into the output video.  
 
 Args:  
 `path`: The full path to the album's folder  
