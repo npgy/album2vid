@@ -42,6 +42,26 @@ def throw_error(text):
     print("ERROR: "+text)
     exit()
 
+def cleanup():
+    """
+    Cleans up temporary files that may have been generated
+    """
+
+    try:
+        # Remove unndeeded files list file
+        os.remove(dir+"files.txt")
+
+        # Remove temp dir files
+        for file in files:
+                os.remove(f"{temp_dir}/{get_shortname(file)}.m4a")
+    except FileNotFoundError:
+                pass
+    try:
+        # Remove temp dir
+        os.rmdir(temp_dir)
+    except FileNotFoundError:
+        pass
+
 # FFMPEG binary location
 ffmpeg = "ffmpeg"
 
@@ -88,6 +108,9 @@ except IndexError:
 # Sort the list of files
 files.sort()
 
+# Clean up temp files in case program was exited abruptly on last run
+cleanup()
+
 # Calculate tracklist with timestamps
 with open(dir+"tracklist.txt", "w") as f:
     curr_time = 0.0
@@ -121,14 +144,5 @@ if not args.fast:
 render_cmd = f'{ffmpeg} -hwaccel auto -y -loop 1 -framerate 1 -i "{cover}" -f concat -safe 0 -i "{dir}files.txt" -tune stillimage -shortest -fflags +shortest -max_interleave_delta 100M -vf format=yuv420p -s 1080x1080 -b:a 320k "{dir}out.mp4"'
 subprocess.call(render_cmd, shell=True)
 
-# Remove unndeeded files list file
-os.remove(dir+"files.txt")
-
-if not args.fast:
-    # Remove temp dir
-    for file in files:
-        try:
-            os.remove(f"{temp_dir}/{get_shortname(file)}.m4a")
-        except FileNotFoundError:
-            pass
-    os.rmdir(temp_dir)
+# Cleanup temporary files
+cleanup()
