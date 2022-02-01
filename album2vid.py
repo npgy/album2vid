@@ -6,7 +6,7 @@ import subprocess
 import mutagen
 import time
 import argparse
-from sys import exit
+from sys import exit, platform
 
 parser = argparse.ArgumentParser(description="A command line tool for generating videos from albums/tracks")
 parser.add_argument('-f', '--fast', action='store_true', help="Enables fast mode, may cause rendering errors")
@@ -67,6 +67,10 @@ def cleanup():
 # FFMPEG binary location
 ffmpeg = "ffmpeg"
 
+# Fix command for linux systems
+if platform == "linux":
+    ffmpeg = "./"+ffmpeg
+
 print("Welcome to album2vid!")
 
 # Ask user for album directory
@@ -80,7 +84,7 @@ temp_dir = dir+"/.temp"
 if not (os.path.isdir(dir) or dir == ""):
     throw_error("The directory could not be found")
 
-print(f"Currently running in the directory: {os.getcwd()}")
+# print(f"Currently running in the directory: {os.getcwd()}")
 print()
 
 # Add trailing slash for expanding filenames
