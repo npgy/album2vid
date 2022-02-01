@@ -1,3 +1,5 @@
+# AUTHOR: Nicholas Preston (npgy)
+
 from glob import glob
 import os
 import subprocess
