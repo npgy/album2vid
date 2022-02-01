@@ -10,8 +10,13 @@ You can also choose to just clone the python script and run it manually with you
 
 ## Usage
 `album2vid [-h] [-f] [path]`  
-Flags:
-`-f` or `--fast`: Enables fast mode, may cause rendering errors.
+
+Flags:  
+`-f` or `--fast`: Enables fast mode, may cause rendering errors.  
+
+Args:  
+`path`: The full path to the album's folder  
+Make sure to enclose this in quotes
 
 
 First make sure you have prepared your album's files correctly. They need to be ordered numerically and the cover art needs to have a particular name.
