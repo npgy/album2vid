@@ -19,7 +19,7 @@ def get_runtime(filename):
     ;return: the file's runtime as a float
     """
     raw_info = mutagen.File(filename).info.pprint()
-    runtime = float(raw_info.split(', ')[1].split(' ')[0])
+    runtime = float(raw_info.rsplit(', ', 1)[1].split(' ')[0])
     return runtime
 
 def get_shortname(filename):
@@ -28,7 +28,7 @@ def get_shortname(filename):
     ;param filename: the file's full path
     ;return: the file's name
     """
-    return filename.split('/')[-1].split('\\')[-1].split('.')[0]
+    return filename.split('/')[-1].split('\\')[-1].rsplit('.', 1)[0]
 
 def get_timestamp(seconds):
     """Returns the formatted timestamp
