@@ -115,11 +115,11 @@ if not args.fast:
     os.mkdir(temp_dir)
     for file in files:
         first_pass_cmd = f"""{ffmpeg} -i "{file}" -map 0 -map -v? -map V? -acodec aac -b:a 320k "{temp_dir}/{get_shortname(file)}.m4a" """
-        subprocess.run(first_pass_cmd)
+        subprocess.call(first_pass_cmd, shell=True)
 
 # Construct FFMPEG command for final render
 render_cmd = f'{ffmpeg} -hwaccel auto -y -loop 1 -framerate 1 -i "{cover}" -f concat -safe 0 -i "{dir}files.txt" -tune stillimage -shortest -fflags +shortest -max_interleave_delta 100M -vf format=yuv420p -s 1080x1080 -b:a 320k "{dir}out.mp4"'
-subprocess.run(render_cmd)
+subprocess.call(render_cmd, shell=True)
 
 # Remove unndeeded files list file
 os.remove(dir+"files.txt")
