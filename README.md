@@ -5,7 +5,6 @@ It lets you generate an output video from audio files and their respective cover
 
 ## Installation
 The simplest way to install this tool is to download the binary for your OS on the [releases](https://github.com/npgy/album2vid/releases) page. 
-Unfortunately at the moment there is only a binary for Windows.  
 You can also choose to just clone the python script and run it manually with your own binary of Ffmpeg. This will work on any OS, although it's only been tested on Windows and macOS.  
 
 ## Usage
