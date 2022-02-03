@@ -39,4 +39,4 @@ I hope anyone who comes across this finds it useful!
 Z from Nightride FM for help with FFMPEG  
 
 ### Projects that use this:
-album2vid-gui by HurleyBirdJr (wip)
+[album2vid-gui](https://github.com/HurleybirdJr/album2vid-gui) by HurleyBirdJr (wip)
