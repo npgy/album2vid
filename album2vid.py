@@ -1,12 +1,14 @@
 # AUTHOR: Nicholas Preston (npgy)
 
 from glob import glob
+from msilib.schema import File
 import os
 import subprocess
 import mutagen
 import time
 import argparse
 from sys import exit, platform
+import shutil
 
 parser = argparse.ArgumentParser(description="A command line tool for generating videos from albums/tracks")
 parser.add_argument('-f', '--fast', action='store_true', help="Enables fast mode, may cause rendering errors")
@@ -49,18 +51,15 @@ def cleanup():
     Cleans up temporary files that may have been generated
     """
 
+    # Try deleting temp directory
+    try:
+        shutil.rmtree(temp_dir, ignore_errors=False, onerror=None)
+    except:
+        throw_error("Error deleting the temp directory")
+
     try:
         # Remove unndeeded files list file
         os.remove(dir+"files.txt")
-
-        # Remove temp dir files
-        for file in files:
-                os.remove(f"{temp_dir}/{get_shortname(file)}.m4a")
-    except FileNotFoundError:
-                pass
-    try:
-        # Remove temp dir
-        os.rmdir(temp_dir)
     except FileNotFoundError:
         pass
 
