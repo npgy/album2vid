@@ -4,9 +4,8 @@ If you run a YouTube channel for music like I do, you will find this useful.
 It lets you generate an output video from audio files and their respective cover art reasonably fast.
 
 ## Installation
-The simplest way to install this tool is to download the binary for your OS on the [releases](https://github.com/npgy/album2vid/releases) page. 
-Unfortunately at the moment there is only a binary for Windows.  
-You can also choose to just clone the python script and run it manually with your own binary of Ffmpeg. This will work on any OS, although it's only been tested on Windows and macOS.  
+The simplest way to install this tool is to download the binary for your OS on the [releases](https://github.com/npgy/album2vid/releases) page.  
+You can also choose to just clone the python script and run it manually with your own binary of Ffmpeg. This should work on any OS.  
 
 ## Usage
 `album2vid [-h] [-f] [path]`  
@@ -40,4 +39,4 @@ I hope anyone who comes across this finds it useful!
 Z from Nightride FM for help with FFMPEG  
 
 ### Projects that use this:
-album2vid-gui by HurleyBirdJr (wip)
+[album2vid-gui](https://github.com/HurleybirdJr/album2vid-gui) by HurleyBirdJr
