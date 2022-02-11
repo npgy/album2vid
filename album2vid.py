@@ -1,3 +1,5 @@
+#!/usr/bin/env python3
+
 # AUTHOR: Nicholas Preston (npgy) and Alexis Masson (Aveheuzed)
 
 import subprocess
