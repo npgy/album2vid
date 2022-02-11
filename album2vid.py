@@ -52,7 +52,7 @@ def cleanup():
 
     # Try deleting temp directory
     try:
-        shutil.rmtree(temp_dir, ignore_errors=False, onerror=None)
+        shutil.rmtree(temp_dir, ignore_errors=True, onerror=None)
     except:
         throw_error("Error deleting the temp directory")
 
