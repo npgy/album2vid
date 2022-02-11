@@ -1,7 +1,6 @@
 # AUTHOR: Nicholas Preston (npgy)
 
 from glob import glob
-from msilib.schema import File
 import os
 import subprocess
 import mutagen
@@ -18,7 +17,7 @@ args = parser.parse_args()
 
 def get_runtime(filename):
     """Returns the runtime of a file
-    
+
     ;param filename: the file's full path
     ;return: the file's runtime as a float
     """
@@ -28,7 +27,7 @@ def get_runtime(filename):
 
 def get_shortname(filename):
     """Returns just the file's name
-    
+
     ;param filename: the file's full path
     ;return: the file's name
     """
@@ -36,7 +35,7 @@ def get_shortname(filename):
 
 def get_timestamp(seconds):
     """Returns the formatted timestamp
-    
+
     ;param seconds: the length of time in seconds
     ;return: the formatted timestamp
     """
@@ -134,7 +133,7 @@ with open(dir+"files.txt", "w") as f:
             file = "'\\''".join(file)
         else:
             file = file[0]
-        
+
         # Write the file line
         f.write("file '"+file+"'\n")
 
