@@ -65,10 +65,6 @@ def cleanup():
 # FFMPEG binary location
 ffmpeg = "ffmpeg"
 
-# Fix command for linux systems
-if platform == "linux":
-    ffmpeg = "./"+ffmpeg
-
 print("Welcome to album2vid!")
 
 # Ask user for album directory
