@@ -1,4 +1,4 @@
-# AUTHOR: Nicholas Preston (npgy)
+# AUTHOR: Nicholas Preston (npgy) and Alexis Masson (Aveheuzed)
 
 import subprocess
 import mutagen
