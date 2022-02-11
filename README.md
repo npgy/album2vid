@@ -18,10 +18,16 @@ Args:
 `path`: The full path to the album's folder  
 Make sure to enclose this in quotes
 
-
 First make sure you have prepared your album's files correctly. They need to be ordered numerically and the cover art needs to have a particular name.
-Here's an example of what that would look like:  
 
+### Audio file compatability:
+```.wav```
+```.mp3```
+```.m4a```
+```.ogg```
+```.flac```
+
+#### Here's an example folder:  
 ![Album file example](https://i.imgur.com/yqjylZX.png)
 
 As you can see, the tracks have their numbers in front of them, and the cover art is named "cover.jpg".  
@@ -34,6 +40,10 @@ In addition, this program also generates a tracklist with timestamps for you! It
 Some things to note are that this renders in x264 and 1080x1080. Your cover art must be 1:1 aspect ratio; most are.  
 
 I hope anyone who comes across this finds it useful!
+
+## Notes
+Some things to note are that this renders in x264 and 1080x1080.  
+Your cover art must also be 1:1 aspect ratio; most are.  
 
 ### Big thanks to:
 Z from Nightride FM for help with FFMPEG  
