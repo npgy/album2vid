@@ -47,8 +47,8 @@ Once you have the ffmpeg binary and this script in the same folder, you can use 
 The resulting executable should be found in the `dist/` directory.
 
 ## Notes
-- Some things to note are that this renders in x264 and 1080x1080.  
-- Your cover art must also be 1:1 aspect ratio; most are.  
+- The output is rendered in x264 at 1080x1080.  
+- Your cover art must be 1:1 aspect ratio; most are.  
 - If a universal2 binary of ffmpeg exists for macOS, I would love to know as it would allow me to compile only one binary for macOS to support both architectures.
 
 ### Big thanks to:
