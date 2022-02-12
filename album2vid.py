@@ -142,6 +142,10 @@ def main_ffmpeg_call(filelist, cover, outfile) :
 # FFMPEG binary location
 FFMPEG = shutil.which("ffmpeg")
 
+# Check if FFMPEG binary exists
+if not FFMPEG:
+    throw_error("An FFMPEG installation could not be found on your system. Make sure it's installed and added to your path variable.")
+
 parser = argparse.ArgumentParser(description="A command line tool for generating videos from albums/tracks")
 parser.add_argument('-f', '--fast', action='store_true', help="Enables fast mode, may cause rendering errors")
 parser.add_argument("path", nargs="?", default="", help="The full path to the album's folder", type=pathlib.Path)
