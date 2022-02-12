@@ -41,9 +41,19 @@ Some things to note are that this renders in x264 and 1080x1080. Your cover art 
 
 I hope anyone who comes across this finds it useful!
 
+## Compiling
+To compile this python script I use PyInstaller, which can be installed via pip like so: `pip install pyinstaller`.  
+Before you compile, make sure you grab the appropriate [ffmpeg binary](https://ffmpeg.org/download.html) for the system you are targeting.  
+Once you have the ffmpeg binary and this script in the same folder, you can use the following PyInstaller command to compile it into one fat binary:  
+For x86 systems: `pyinstaller -F --add-binary="ffmpeg:." --target-arch=x86_64 album2vid.py`.  
+For arm64 systems: `pyinstaller -F --add-binary="ffmpeg:." --target-arch=arm64 album2vid.py`.  
+
+The resulting executable should be found in the `dist/` directory.
+
 ## Notes
 Some things to note are that this renders in x264 and 1080x1080.  
 Your cover art must also be 1:1 aspect ratio; most are.  
+If a universal2 binary of ffmpeg exists for macOS, I would love to know as it would allow me to compile only one binary for macOS to support both architectures.
 
 ### Big thanks to:
 Z from Nightride FM for help with FFMPEG  
