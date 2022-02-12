@@ -37,16 +37,12 @@ Once you open the program, it will ask for the directory of your album's files. 
 After it converts your audio files and cover art to a video, a file named "out.mp4" will appear. This is your final video, you are ready to upload!  
 In addition, this program also generates a tracklist with timestamps for you! It will output to the file "tracklist.txt"
 
-Some things to note are that this renders in x264 and 1080x1080. Your cover art must be 1:1 aspect ratio; most are.  
-
-I hope anyone who comes across this finds it useful!
-
 ## Compiling
 To compile this python script I use PyInstaller, which can be installed via pip like so: `pip install pyinstaller`.  
 Before you compile, make sure you grab the appropriate [ffmpeg binary](https://ffmpeg.org/download.html) for the system you are targeting.  
 Once you have the ffmpeg binary and this script in the same folder, you can use the following PyInstaller command to compile it into one fat binary:  
-For x86 systems: `pyinstaller -F --add-binary="ffmpeg:." --target-arch=x86_64 album2vid.py`.  
-For arm64 systems: `pyinstaller -F --add-binary="ffmpeg:." --target-arch=arm64 album2vid.py`.  
+- For x86 systems: `pyinstaller -F --add-binary="ffmpeg:." --target-arch=x86_64 album2vid.py`.  
+- For arm64 systems: `pyinstaller -F --add-binary="ffmpeg:." --target-arch=arm64 album2vid.py`.  
 
 The resulting executable should be found in the `dist/` directory.
 
