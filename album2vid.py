@@ -10,6 +10,8 @@ import shutil
 import pathlib
 import tempfile
 import shlex
+from sys import exit
+import os, sys
 
 def get_runtime(filename):
     """Returns the runtime of a file
@@ -32,8 +34,6 @@ def get_timestamp(seconds):
 def throw_error(text):
     print("ERROR: "+text)
     exit(1)
-
-
 
 def cleanup(temp_dir):
     """
@@ -139,8 +139,13 @@ def main_ffmpeg_call(filelist, cover, outfile) :
     ]
     subprocess.call(render_cmd)
 
-# FFMPEG binary location
-FFMPEG = shutil.which("ffmpeg")
+FFMPEG = None
+
+# Grab the correct binary for FFMPEG for either frozen exe or regular py script
+if getattr(sys, 'frozen', False):
+    FFMPEG = "ffmpeg"
+elif __file__:
+    FFMPEG = shutil.which("ffmpeg")
 
 # Check if FFMPEG binary exists
 if not FFMPEG:
