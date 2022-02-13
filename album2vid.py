@@ -79,10 +79,18 @@ def gen_filelist(infiles, tmpd) :
         """Write all audio files to a temporary text document for ffmpeg
         Returns the path of that text document."""
 
-        filename = tmpd/"files.txt"
+        filename = "files.txt"
         with open(filename, "w") as f:
             for file in infiles:
-                print("file", shlex.quote(str(file)), file=f)
+                 # This part ensures that any apostrophes are escaped
+                file = str(file).split("'")
+                if len(file) > 1:
+                    file = "'\\''".join(file)
+                else:
+                    file = file[0]
+                
+                # Write the file line
+                f.write("file '"+file+"'\n")
 
         return filename
 
