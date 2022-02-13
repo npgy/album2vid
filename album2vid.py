@@ -152,6 +152,8 @@ FFMPEG = None
 # Grab the correct binary for FFMPEG for either frozen exe or regular py script
 if getattr(sys, 'frozen', False):
     FFMPEG = "ffmpeg"
+    if sys.platform == "linux":
+        FFMPEG = "./"+FFMPEG
 elif __file__:
     FFMPEG = shutil.which("ffmpeg")
 
