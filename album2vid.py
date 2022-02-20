@@ -19,9 +19,8 @@ def get_runtime(filename):
     ;param filename: the file's full path
     ;return: the file's runtime as a float
     """
-    raw_info = mutagen.File(filename).info.pprint()
-    runtime = float(raw_info.rsplit(', ', 1)[1].split(' ')[0])
-    return runtime
+    file = mutagen.File(filename)
+    return file.info.length
 
 def get_timestamp(seconds):
     """Returns the formatted timestamp
@@ -79,7 +78,7 @@ def gen_filelist(infiles, tmpd) :
         """Write all audio files to a temporary text document for ffmpeg
         Returns the path of that text document."""
 
-        filename = "files.txt"
+        filename = tmpd/"files.txt"
         with open(filename, "w") as f:
             for file in infiles:
                  # This part ensures that any apostrophes are escaped
@@ -99,7 +98,7 @@ def gen_tracklist(infiles, outfile) :
     with open(outfile, "w") as f:
         curr_time = 0.0
         for file in infiles:
-            print(shlex.quote(file.stem), "--", get_timestamp(curr_time), file=f)
+            print(file.stem, "--", get_timestamp(curr_time), file=f)
             curr_time += get_runtime(file)
 
 def getcover(srcdir) :
