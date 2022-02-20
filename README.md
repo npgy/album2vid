@@ -33,9 +33,8 @@ First make sure you have prepared your album's files correctly. They need to be 
 As you can see, the tracks have their numbers in front of them, and the cover art is named "cover.jpg".  
 This program also accepts "cover.png".
 
-Once you open the program, it will ask for the directory of your album's files. You can paste in the path url or just run the program inside that folder and hit enter.  
-After it converts your audio files and cover art to a video, a file named "out.mp4" will appear. This is your final video, you are ready to upload!  
-In addition, this program also generates a tracklist with timestamps for you! It will output to the file "tracklist.txt"
+After it converts your audio files and cover art to a video, a file named "out.mp4" will appear in the same directory you ran the command on. This is your final video, you are ready to upload!  
+In addition, this program also generates a tracklist with timestamps for you! It will output to the file "tracklist.txt" in that same directory.
 
 ## Compiling
 To compile this python script I use PyInstaller, which can be installed via pip like so: `pip install pyinstaller`.  
