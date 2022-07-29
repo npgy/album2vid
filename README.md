@@ -20,7 +20,7 @@ Make sure to enclose this in quotes
 
 First make sure you have prepared your album's files correctly. They need to be ordered numerically and the cover art needs to have a particular name.
 
-### Audio file compatability:
+### Audio file compatibility:
 ```.wav```
 ```.mp3```
 ```.m4a```
@@ -52,6 +52,7 @@ The resulting executable should be found in the `dist/` directory.
 
 ### Big thanks to:
 Z from Nightride FM for help with FFMPEG  
+[Alexis Masson](https://github.com/Aveheuzed) for helping refactor, organize, and simplify the codebase
 
 ### Projects that use this:
 [album2vid-gui](https://github.com/HurleybirdJr/album2vid-gui) by HurleyBirdJr
