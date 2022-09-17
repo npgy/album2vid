@@ -50,6 +50,9 @@ The resulting executable should be found in the `dist/` directory.
 - Your cover art must be 1:1 aspect ratio; most are.  
 - If a universal2 binary of ffmpeg exists for macOS, I would love to know as it would allow me to compile only one binary for macOS to support both architectures.
 
+## Known Issues
+- Certain image files cause the GPU acceleration to fail and thus the whole command, I haven't looked too far into this
+
 ### Big thanks to:
 Z from Nightride FM for help with FFMPEG  
 [Alexis Masson](https://github.com/Aveheuzed) for helping refactor, organize, and simplify the codebase
