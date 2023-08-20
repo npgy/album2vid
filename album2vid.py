@@ -149,12 +149,22 @@ def main_ffmpeg_call(filelist, cover, outfile) :
 FFMPEG = None
 
 # Grab the correct binary for FFMPEG for either frozen exe or regular py script
-if getattr(sys, 'frozen', False):
-    FFMPEG = "ffmpeg"
-    if sys.platform == "linux":
-        FFMPEG = "./"+FFMPEG
-elif __file__:
-    FFMPEG = shutil.which("ffmpeg")
+# if getattr(sys, 'frozen', False):
+#     FFMPEG = "ffmpeg"
+#     if sys.platform == "linux":
+#         FFMPEG = "./"+FFMPEG
+# elif __file__:
+#     FFMPEG = shutil.which("ffmpeg")
+
+
+# had to comment out above and replace with below to fix
+# the reference to the frozen ffmpeg binary
+# still needs testing and proper builds for each platform
+
+if hasattr(sys, '_MEIPASS'):
+    FFMPEG = os.path.join(sys._MEIPASS, 'ffmpeg')
+else:
+    FFMPEG = os.path.join(os.path.abspath("."), 'ffmpeg')
 
 # Check if FFMPEG binary exists
 if not FFMPEG:
