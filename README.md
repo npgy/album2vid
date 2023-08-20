@@ -52,6 +52,7 @@ The resulting executable should be found in the `dist/` directory.
 
 ## Known Issues
 - Certain image files cause the GPU acceleration to fail and thus the whole command, I haven't looked too far into this
+- The current binary build, for at least Windows, does not actual reference the correct internal ffmpeg frozen binary. This will be fixed soon
 
 ### Big thanks to:
 Z from Nightride FM for help with FFMPEG  
