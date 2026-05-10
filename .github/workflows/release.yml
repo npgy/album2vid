@@ -27,12 +27,16 @@ jobs:
         uses: actions/github-script@v9
         with:
           script: |
-            github.rest.git.createRef({
-              owner: context.repo.owner,
-              repo: context.repo.repo,
-              ref: 'refs/tags/${{steps.gen-tag.outputs.tag}}',
-              sha: context.sha
-            })
+            try {
+              github.rest.git.createRef({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                ref: 'refs/tags/${{steps.gen-tag.outputs.tag}}',
+                sha: context.sha
+              })
+            } catch (error) {
+              console.log('Tag already exists, skipping tag creation.')
+            }
       - name: Set up Go
         uses: actions/setup-go@v6
         with:
