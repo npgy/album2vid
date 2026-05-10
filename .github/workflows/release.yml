@@ -1,6 +1,7 @@
 name: Release album2vid
 
 on:
+  workflow_dispatch:
   push:
     branches: ["main"]
 
