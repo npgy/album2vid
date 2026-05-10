@@ -17,7 +17,6 @@ before:
 
 builds:
   - main: ./cmd/album2vid
-    dir: .
     env:
       - CGO_ENABLED=0
     goos:
