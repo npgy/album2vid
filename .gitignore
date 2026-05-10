@@ -2,3 +2,7 @@ __pycache__/
 build/
 *.spec
 *.exe
+# Added by goreleaser init:
+dist/
+.DS_Store
+album2vid
