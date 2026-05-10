@@ -16,7 +16,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v6
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          fetch-tags: true
       - name: Get tag
         id: gen-tag
         run: |
@@ -40,11 +43,8 @@ jobs:
         uses: actions/setup-go@v6
         with:
           go-version: "1.26.2"
-      - name: Fetch all tags
-        uses: actions/checkout@v4
-        with:
-          fetch-tags: true
-          fetch-depth: 0 # Get full history
+      - name: Fetch new tag
+        run: git fetch --tags
       # More assembly might be required: Docker logins, GPG, etc.
       # It all depends on your needs.
       - name: Run GoReleaser
